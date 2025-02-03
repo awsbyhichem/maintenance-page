@@ -1,11 +1,11 @@
 when HTTP_REQUEST {
 	switch [HTTP::uri] {
 		"/" -
-		"/maintenance_index.html" {
-			HTTP::respond 200 content [ifile get maintenance_index.html] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
+		"/index.html" {
+			HTTP::respond 200 content [ifile get index.html] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
 		}
-		"/css/maintenance_styles.css" {
-			HTTP::respond 200 content [ifile get maintenance_styles.css] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
+		"/css/styles.css" {
+			HTTP::respond 200 content [ifile get styles.css] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
 		}
 		"/img/logo.png" {
 			HTTP::respond 200 content [ifile get logo.png] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
