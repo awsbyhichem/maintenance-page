@@ -1,0 +1,17 @@
+when HTTP_REQUEST {
+	switch [HTTP::uri] {
+		"/" -
+		"/maintenance_index.html" {
+			HTTP::respond 200 content [ifile get maintenance_index.html] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
+		}
+		"/css/maintenance_styles.css" {
+			HTTP::respond 200 content [ifile get maintenance_styles.css] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
+		}
+		"/img/logo.png" {
+			HTTP::respond 200 content [ifile get logo.png] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
+		}
+	}
+}
+
+
+### https://github.com/sebbycorp/hosted-page/blob/master/planned_upgrade_page/planned_upgrade.irule
