@@ -1,17 +1,19 @@
-when HTTP_REQUEST {
-	switch [HTTP::uri] {
-		"/" -
-		"/index.html" {
-			HTTP::respond 200 content [ifile get index.html] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
-		}
-		"/css/styles.css" {
-			HTTP::respond 200 content [ifile get styles.css] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
-		}
-		"/img/logo.png" {
-			HTTP::respond 200 content [ifile get logo.png] "Content-Type" "text/html" noserver "Cache-Control" "no-store, no-cache"
-		}
-	}
+when HTTP_RESPONSE {
+    if { [HTTP::status] == 503 && [HTTP::header exists "X-maintenance"] } {
+        set maintenanceHeader [HTTP::header "X-maintenance"]
+        
+        if { $maintenanceHeader eq "processing" } {
+            HTTP::header remove "X-maintenance"
+            HTTP::respond 503 content {
+
+
+
+
+                
+
+
+
+            } "Content-Type" "text/html"
+        }
+    }
 }
-
-
-### https://github.com/sebbycorp/hosted-page/blob/master/planned_upgrade_page/planned_upgrade.irule
