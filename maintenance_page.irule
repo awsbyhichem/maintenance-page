@@ -4,6 +4,10 @@ when HTTP_RESPONSE {
         
         if { $maintenanceHeader eq "processing" } {
             HTTP::header remove "X-maintenance"
+            HTTP::header insert "Cache-Control" "max-age=0, no-store, no-cache, must-revalidate"
+            HTTP::header insert "Pragma" "no-cache"
+            HTTP::header insert "Expires" "Thu, 01 Jan 1970 00:00:00 GMT"
+            HTTP::header insert "Retry-After" "3600"
             HTTP::respond 503 content {
 
 
