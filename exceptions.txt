@@ -1,0 +1,4 @@
+# Autorise l’IP individuelle
+192.168.0.1 OK
+# Autorise toute la plage Class C
+172.20.0 OK
