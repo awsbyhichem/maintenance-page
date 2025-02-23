@@ -1,0 +1,21 @@
+1. Connaître le type et le mode de génération des certificats:
+
+- Inspection du certificat: via openssl 
+- Analyse des métadonnées
+- Identification de l’outil ou le fournisseur des certificats
+
+2. Comprendre le mode de fonctionnement de Certbot:
+
+- Comment fonctionne Certbot et Cas d'utilisation de Certbot
+- C'est quoi le protocole ACME "Automatic Certificate Management Environment"
+- Le processus ACME (ACME server, client ...)
+- Liste des fournisseurs qui utilisent le protocole ACME (le fournisseur utilisé dans notre cas appartient ou non à cette liste)
+
+3. Si notre fournisseurs n'appartient pas à la liste:
+
+- Pensez à mettre en place une passerelle ou une solution tierce 
+- Voir la solution: acme2certifier
+https://github.com/grindsa/acme2certifier
+
+
+4.
