@@ -19,3 +19,23 @@ https://github.com/grindsa/acme2certifier
 
 
 4.
+
+
+
+
+
+    # Si le site est en maintenance, déclencher le code 503 et définir la variable d'environnement "maintenance"
+    RewriteCond /var/www/html/maintenance/ALL -f [OR]
+    RewriteCond /var/www/html/maintenance/%{SERVER_NAME} -f
+    RewriteCond %{ENV:REDIRECT_STATUS} ^$
+    RewriteRule .* - [R=503,L,E=maintenance:processing]
+
+    RewriteCond /var/www/html/maintenance/ALL !-f
+    RewriteCond /var/www/html/maintenance/%{SERVER_NAME} !-f
+    RewriteRule ^/maintenance/ - [F,L]
+
+    Alias /maintenance /var/www/html/maintenance
+
+    <IfModule mod_headers.c>
+        Header always set X-maintenance "processing" env=REDIRECT_maintenance
+    </IfModule>
