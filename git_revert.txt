@@ -1,0 +1,14 @@
+git clone ...
+
+git checkout develop
+git log --oneline --graph
+
+
+git checkout release
+git revert -m 1 abcd1234
+
+
+git commit --amend
+
+
+git push origin release
